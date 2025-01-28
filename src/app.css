@@ -37,3 +37,9 @@
 	--color-primary: #e6c57d;
 	--color-secondary: #d7c0bb;
 }
+
+@layer base {
+	body {
+		@apply bg-surface text-surface-content;
+	}
+}
