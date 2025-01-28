@@ -75,7 +75,7 @@
 
 /* Text block */
 @utility text-block {
-	@apply space-y-[1.5em];
+	@apply space-y-[1.4em];
 }
 
 @layer base {
