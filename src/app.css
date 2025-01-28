@@ -27,7 +27,8 @@
 @theme {
 	/* Breakpoint */
 	--breakpoint-*: initial;
-	--breakpoint-desktop: 50rem;
+	--breakpoint-tablet: 50rem;
+	--breakpoint-desktop: 72rem;
 
 	/* Spacing */
 	--spacing: clamp(0.25rem, 0.1571rem + 0.381vw, 0.5rem);
