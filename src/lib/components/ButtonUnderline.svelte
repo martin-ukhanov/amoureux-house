@@ -6,7 +6,7 @@
 	{href}
 	class="relative flex w-fit flex-col items-center justify-center gap-y-[0.5em] text-primary"
 >
-	<span class="px-[0.1em] text-center text-nowrap">{text}</span>
+	<span class="px-[0.1em] text-center text-button text-nowrap">{text}</span>
 
 	<svg viewBox="0 0 159 14" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<path

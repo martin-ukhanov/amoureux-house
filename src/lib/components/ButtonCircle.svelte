@@ -21,5 +21,5 @@
 		/>
 	</svg>
 
-	<span class="text-center text-nowrap">{text}</span>
+	<span class="text-center text-button text-nowrap">{text}</span>
 </a>

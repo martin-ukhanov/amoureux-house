@@ -85,9 +85,4 @@
 	h3 {
 		@apply text-h3;
 	}
-
-	a,
-	button {
-		@apply text-button;
-	}
 }
