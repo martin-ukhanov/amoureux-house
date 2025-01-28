@@ -29,6 +29,9 @@
 	--breakpoint-*: initial;
 	--breakpoint-desktop: 48rem;
 
+	/* Spacing */
+	--spacing: clamp(0.25rem, 0.2036rem + 0.1905vw, 0.375rem);
+
 	/* Font family */
 	--font-*: initial;
 	--font-heading: 'PP Migra', serif;
