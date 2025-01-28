@@ -24,7 +24,7 @@
 		Amoureux
 	</span>
 
-	<p class="self-end text-body-sm max-desktop:row-start-5">
+	<p class="self-end text-body-sm max-desktop:row-start-5 max-desktop:-mt-2 max-desktop:ml-2">
 		Featuring Pelagie X<br />A film by Breakwater Studios
 	</p>
 	<span
