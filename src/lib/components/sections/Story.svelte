@@ -30,9 +30,9 @@
 			<img src={story4} alt="Story 4" class="col-span-2 col-start-4 row-span-6 rounded-sm" />
 		</div>
 
-		<div class="-mt-[0.5em] flex h-fit flex-4 gap-x-2.5 text-secondary">
-			<div class="flex flex-1 flex-col gap-y-6">
-				<p>
+		<div class="-mt-[0.5em] flex h-fit flex-4 flex-col gap-y-6 text-secondary">
+			<div class="flex gap-x-2.5">
+				<p class="flex-1">
 					AmoureuxHouse.org aims to make the cultural, historical, and architectural significance of
 					the Amoureux House in Ste. Genevieve come alive for all, particularly youth and educators.
 					The heart of AmoureuxHouse.org is the life of Pelagie Vital Amoureux, a remarkable woman
@@ -45,17 +45,17 @@
 					located just 60 miles south of St. Louis.
 				</p>
 
-				<ButtonUnderline text="Download the app" href="/" />
+				<p class="flex-1">
+					Our hope is that learning about Pelagie, her house, and the times in which she lived will
+					pique your curiosity to wonder and ask questions. Did she cook a tasty gumbo? What did she
+					and her family laugh and talk about? Where did she find her strength?
+					<br /><br />
+					We hope that asking such questions will cast a light on our shared humanity. Pelagie chose
+					to live her life fully. She kept moving forward. She knew the true sense of courage.
+				</p>
 			</div>
 
-			<p class="flex-1">
-				Our hope is that learning about Pelagie, her house, and the times in which she lived will
-				pique your curiosity to wonder and ask questions. Did she cook a tasty gumbo? What did she
-				and her family laugh and talk about? Where did she find her strength?
-				<br /><br />
-				We hope that asking such questions will cast a light on our shared humanity. Pelagie chose to
-				live her life fully. She kept moving forward. She knew the true sense of courage.
-			</p>
+			<ButtonUnderline text="Download the app" href="/" />
 		</div>
 	</div>
 
