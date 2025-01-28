@@ -25,6 +25,11 @@
 }
 
 @theme {
+	/* Breakpoint */
+	--breakpoint-*: initial;
+	--breakpoint-tablet: 42rem;
+	--breakpoint-desktop: 58rem;
+
 	/* Font family */
 	--font-*: initial;
 	--font-heading: 'PP Migra', serif;
