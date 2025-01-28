@@ -21,7 +21,7 @@
 
 <Header />
 
-<main>
+<main class="overflow-clip">
 	<Hero />
 	<Story />
 </main>
