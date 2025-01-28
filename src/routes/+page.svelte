@@ -1,6 +1,13 @@
 <script lang="ts">
 	import '../app.css';
+	import Header from '$lib/components/Header.svelte';
+	import Hero from '$lib/components/sections/Hero.svelte';
+	import Story from '$lib/components/sections/Story.svelte';
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<Header />
+
+<main>
+	<Hero />
+	<Story />
+</main>
