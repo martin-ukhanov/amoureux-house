@@ -24,12 +24,16 @@
 		Amoureux
 	</span>
 
-	<p class="self-end text-body-sm max-tablet:row-start-5 max-tablet:-mt-2 max-tablet:ml-2">
-		Featuring Pelagie X<br />A film by Breakwater Studios
-	</p>
-	<span aria-hidden="true" class="mt-[0.02333em] -mb-[0.146em] block text-h1 max-tablet:row-start-3"
-		>House</span
+	<div class="self-end text-body-sm max-tablet:row-start-5 max-tablet:-mt-2 max-tablet:ml-2">
+		<p>Featuring Pelagie X</p>
+		<p>A film by Breakwater Studios</p>
+	</div>
+	<span
+		aria-hidden="true"
+		class="mt-[0.02333em] -mb-[0.146em] block text-h1 max-tablet:row-start-3"
 	>
+		House
+	</span>
 	<div class="relative max-tablet:row-start-3">
 		<div class="button-position absolute">
 			<ButtonCircle text="Visit The House" href="/" />

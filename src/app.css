@@ -73,6 +73,11 @@
 	@apply text-[clamp(1rem,0.9071rem+0.381vw,1.25rem)] leading-[1] font-normal tracking-[-0.02em];
 }
 
+/* Block text */
+@utility text-block {
+	@apply space-y-[1.5em];
+}
+
 @layer base {
 	body {
 		@apply bg-surface font-body text-body-base text-surface-content;
