@@ -87,7 +87,7 @@
 			<ButtonUnderline text="Download the app" href="/" />
 		</div>
 
-		<div class="grid grid-cols-8 gap-x-2.5 gap-y-12">
+		<div class="grid grid-cols-8 gap-x-2.5 gap-y-10">
 			<img src={story1} alt="Story 1" class="col-span-4 rounded-sm" />
 			<img src={story2} alt="Story 2" class="col-span-5 row-start-2 rounded-sm" />
 			<img src={story3} alt="Story 3" class="col-span-4 rounded-sm" />
