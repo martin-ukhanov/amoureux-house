@@ -29,4 +29,11 @@
 	--font-*: initial;
 	--font-heading: 'PP Migra', serif;
 	--font-body: 'Neue Haas Unica', sans-serif;
+
+	/* Color */
+	--color-*: initial;
+	--color-surface: #352f2d;
+	--color-surface-content: #e8e3d6;
+	--color-primary: #e6c57d;
+	--color-secondary: #d7c0bb;
 }
