@@ -38,51 +38,6 @@
 	/* Font Size */
 	--text-*: initial;
 
-	--text-h1-desktop: 10rem;
-	--text-h1-desktop--letter-spacing: -0.04em;
-	--text-h1-desktop--line-height: 0.8;
-	--text-h1-desktop--font-weight: 800;
-
-	--text-h3-desktop: 3.5rem;
-	--text-h3-desktop--letter-spacing: -0.04em;
-	--text-h3-desktop--line-height: 0.83;
-	--text-h3-desktop--font-weight: 800;
-
-	--text-h1-tablet: 6.875rem;
-	--text-h1-tablet--letter-spacing: -0.04em;
-	--text-h1-tablet--line-height: 0.8;
-	--text-h1-tablet--font-weight: 800;
-
-	--text-h3-tablet: 3rem;
-	--text-h3-tablet--letter-spacing: -0.04em;
-	--text-h3-tablet--line-height: 0.8;
-	--text-h3-tablet--font-weight: 800;
-
-	--text-h1-mobile: 3.75rem;
-	--text-h1-mobile--letter-spacing: -0.04em;
-	--text-h1-mobile--line-height: 0.8;
-	--text-h1-mobile--font-weight: 800;
-
-	--text-h3-mobile: 2.5rem;
-	--text-h3-mobile--letter-spacing: -0.04em;
-	--text-h3-mobile--line-height: 0.83;
-	--text-h3-mobile--font-weight: 800;
-
-	--text-button-desktop: 1.25rem;
-	--text-button-desktop--letter-spacing: -0.02em;
-	--text-button-desktop--line-height: 1;
-	--text-button-desktop--font-weight: 400;
-
-	--text-button-tablet: 1.125rem;
-	--text-button-tablet--letter-spacing: -0.02em;
-	--text-button-tablet--line-height: 1;
-	--text-button-tablet--font-weight: 400;
-
-	--text-button-mobile: 1rem;
-	--text-button-mobile--letter-spacing: -0.02em;
-	--text-button-mobile--line-height: 1;
-	--text-button-mobile--font-weight: 400;
-
 	--text-body-base: 1rem;
 	--text-body-base--letter-spacing: -0.02em;
 	--text-body-base--line-height: 1.5;
@@ -103,16 +58,16 @@
 
 /* Text heading */
 @utility text-h1 {
-	@apply font-heading text-h1-mobile uppercase tablet:text-h1-tablet desktop:text-h1-desktop;
+	@apply font-heading text-[clamp(3.75rem,1.4286rem+9.5238vw,10rem)] leading-[0.8] font-extrabold tracking-[-0.04em] uppercase;
 }
 
 @utility text-h3 {
-	@apply font-heading text-h3-mobile uppercase tablet:text-h3-tablet desktop:text-h3-desktop;
+	@apply font-heading text-[clamp(2.5rem,2.1286rem+1.5238vw,3.5rem)] leading-[0.83] font-extrabold tracking-[-0.04em] uppercase;
 }
 
 /* Text button */
 @utility text-button {
-	@apply text-button-mobile tablet:text-button-tablet desktop:text-button-desktop;
+	@apply text-[clamp(1rem,0.9071rem+0.381vw,1.25rem)] leading-[1] font-normal tracking-[-0.02em];
 }
 
 @layer base {
