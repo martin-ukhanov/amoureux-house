@@ -35,6 +35,64 @@
 	--font-heading: 'PP Migra', serif;
 	--font-body: 'Neue Haas Unica', sans-serif;
 
+	/* Font Size */
+	--text-*: initial;
+
+	--text-h1-desktop: 10rem;
+	--text-h1-desktop--letter-spacing: -0.04em;
+	--text-h1-desktop--line-height: 0.8;
+	--text-h1-desktop--font-weight: 800;
+
+	--text-h3-desktop: 3.5rem;
+	--text-h3-desktop--letter-spacing: -0.04em;
+	--text-h3-desktop--line-height: 0.83;
+	--text-h3-desktop--font-weight: 800;
+
+	--text-h1-tablet: 6.875rem;
+	--text-h1-tablet--letter-spacing: -0.04em;
+	--text-h1-tablet--line-height: 0.8;
+	--text-h1-tablet--font-weight: 800;
+
+	--text-h3-tablet: 3rem;
+	--text-h3-tablet--letter-spacing: -0.04em;
+	--text-h3-tablet--line-height: 0.8;
+	--text-h3-tablet--font-weight: 800;
+
+	--text-h1-mobile: 3.75rem;
+	--text-h1-mobile--letter-spacing: -0.04em;
+	--text-h1-mobile--line-height: 0.8;
+	--text-h1-mobile--font-weight: 800;
+
+	--text-h3-mobile: 2.5rem;
+	--text-h3-mobile--letter-spacing: -0.04em;
+	--text-h3-mobile--line-height: 0.83;
+	--text-h3-mobile--font-weight: 800;
+
+	--text-button-desktop: 1.25rem;
+	--text-button-desktop--letter-spacing: -0.02em;
+	--text-button-desktop--line-height: 1;
+	--text-button-desktop--font-weight: 400;
+
+	--text-button-tablet: 1.125rem;
+	--text-button-tablet--letter-spacing: -0.02em;
+	--text-button-tablet--line-height: 1;
+	--text-button-tablet--font-weight: 400;
+
+	--text-button-mobile: 1rem;
+	--text-button-mobile--letter-spacing: -0.02em;
+	--text-button-mobile--line-height: 1;
+	--text-button-mobile--font-weight: 400;
+
+	--text-body-base: 1rem;
+	--text-body-base--letter-spacing: -0.02em;
+	--text-body-base--line-height: 1.5;
+	--text-body-base--font-weight: 400;
+
+	--text-body-sm: 0.875rem;
+	--text-body-sm--letter-spacing: -0.02em;
+	--text-body-sm--line-height: 1.4;
+	--text-body-sm--font-weight: 400;
+
 	/* Color */
 	--color-*: initial;
 	--color-surface: #352f2d;
@@ -43,8 +101,34 @@
 	--color-secondary: #d7c0bb;
 }
 
+/* Text heading */
+@utility text-h1 {
+	@apply font-heading text-h1-mobile uppercase tablet:text-h1-tablet desktop:text-h1-desktop;
+}
+
+@utility text-h3 {
+	@apply font-heading text-h3-mobile uppercase tablet:text-h3-tablet desktop:text-h3-desktop;
+}
+
+/* Text button */
+@utility text-button {
+	@apply text-button-mobile tablet:text-button-tablet desktop:text-button-desktop;
+}
+
 @layer base {
 	body {
-		@apply bg-surface text-surface-content;
+		@apply bg-surface font-body text-body-base text-surface-content;
+	}
+
+	h1 {
+		@apply text-h1;
+	}
+
+	h3 {
+		@apply text-h3;
+	}
+
+	button {
+		@apply text-button;
 	}
 }
