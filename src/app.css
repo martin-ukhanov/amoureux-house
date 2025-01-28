@@ -1,1 +1,32 @@
 @import 'tailwindcss';
+
+/* PP Migra */
+@font-face {
+	font-family: 'PP Migra';
+	src:
+		url('./lib/assets/fonts/pp-migra/pp-migra-extrabold.woff2') format('woff2'),
+		url('./lib/assets/fonts/pp-migra/pp-migra-extrabold.woff') format('woff'),
+		url('./lib/assets/fonts/pp-migra/pp-migra-extrabold.ttf') format('truetype');
+	font-weight: 800;
+	font-display: swap;
+	font-style: normal;
+}
+
+/* Neue Haas Unica */
+@font-face {
+	font-family: 'Neue Haas Unica';
+	src:
+		url('./lib/assets/fonts/neue-haas-unica/neue-haas-unica-regular.woff2') format('woff2'),
+		url('./lib/assets/fonts/neue-haas-unica/neue-haas-unica-regular.woff') format('woff'),
+		url('./lib/assets/fonts/neue-haas-unica/neue-haas-unica-regular.ttf') format('truetype');
+	font-weight: 400;
+	font-display: swap;
+	font-style: normal;
+}
+
+@theme {
+	/* Font family */
+	--font-*: initial;
+	--font-heading: 'PP Migra', serif;
+	--font-body: 'Neue Haas Unica', sans-serif;
+}
