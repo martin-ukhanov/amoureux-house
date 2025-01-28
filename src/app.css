@@ -27,8 +27,7 @@
 @theme {
 	/* Breakpoint */
 	--breakpoint-*: initial;
-	--breakpoint-tablet: 42rem;
-	--breakpoint-desktop: 58rem;
+	--breakpoint-desktop: 48rem;
 
 	/* Font family */
 	--font-*: initial;
