@@ -4,7 +4,7 @@
 </script>
 
 <section
-	class="m-6 grid grid-cols-[auto_1fr] grid-rows-[repeat(5,auto)] gap-4 border-b-[1px] border-primary pb-4 tablet:grid-cols-[auto_auto_1fr] tablet:grid-rows-[1fr_auto_auto]"
+	class="grid grid-cols-[auto_1fr] grid-rows-[repeat(6,auto)] gap-4 p-6 pb-0 tablet:grid-cols-[auto_auto_1fr] tablet:grid-rows-[1fr_auto_auto]"
 >
 	<h1 class="sr-only">The Amoureux House</h1>
 
@@ -39,6 +39,8 @@
 			<ButtonCircle text="Visit The House" href="/" />
 		</div>
 	</div>
+
+	<div class="col-span-full h-px bg-primary"></div>
 </section>
 
 <style>
