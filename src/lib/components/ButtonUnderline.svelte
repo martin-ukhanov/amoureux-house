@@ -1,10 +1,13 @@
 <script lang="ts">
+	import { buttonGrow } from '$lib/actions/buttonGrow.svelte';
+
 	const { text, href }: { text: string; href: string } = $props();
 </script>
 
 <a
 	{href}
 	class="relative flex w-fit flex-col items-center justify-center gap-y-[0.5em] text-primary"
+	use:buttonGrow
 >
 	<span class="px-[0.1em] text-center text-button text-nowrap">{text}</span>
 

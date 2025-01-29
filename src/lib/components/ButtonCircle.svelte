@@ -1,10 +1,13 @@
 <script lang="ts">
+	import { buttonGrow } from '$lib/actions/buttonGrow.svelte';
+
 	const { text, href }: { text: string; href: string } = $props();
 </script>
 
 <a
 	{href}
 	class="relative flex items-center justify-center rounded-[50%] px-[2em] py-[1.25em] text-primary"
+	use:buttonGrow
 >
 	<svg
 		viewBox="0 0 214 71"
