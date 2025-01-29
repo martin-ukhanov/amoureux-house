@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import { useGSAP } from '$lib/utils/gsap.svelte';
 	import ButtonCircle from '$lib/components/ButtonCircle.svelte';
 	import loopingVideo from '$lib/assets/images/looping-video.avif';
@@ -12,24 +13,20 @@
 
 	$effect(() => {
 		useGSAP(() => {
-			const mm = gsap.matchMedia();
+			function init() {
+				mm = gsap.matchMedia();
+				tl = gsap.timeline();
 
-			gsap.set([the, amoureux, house, image], {
-				x: 0,
-				y: 0
-			});
+				mm.add('(width < 50rem)', () => {
+					ScrollTrigger.create({
+						animation: tl,
+						trigger: scrollArea,
+						start: 'top top',
+						end: 'bottom top',
+						scrub: true
+					});
 
-			mm.add('(width < 50rem)', () => {
-				gsap
-					.timeline({
-						scrollTrigger: {
-							trigger: scrollArea,
-							start: 'top top',
-							end: 'bottom top',
-							scrub: true
-						}
-					})
-					.add([
+					tl.add([
 						gsap.to(the, {
 							x: '-50dvw',
 							ease: 'power1.in'
@@ -47,19 +44,18 @@
 							ease: 'power1.in'
 						})
 					]);
-			});
+				});
 
-			mm.add('(width >= 50rem)', () => {
-				gsap
-					.timeline({
-						scrollTrigger: {
-							trigger: scrollArea,
-							start: 'top -15%',
-							end: 'bottom top',
-							scrub: true
-						}
-					})
-					.add([
+				mm.add('(width >= 50rem)', () => {
+					ScrollTrigger.create({
+						animation: tl,
+						trigger: scrollArea,
+						start: 'top -25%',
+						end: 'bottom top',
+						scrub: true
+					});
+
+					tl.add([
 						gsap.to(the, {
 							x: '-25dvw',
 							ease: 'power1.in'
@@ -77,7 +73,27 @@
 							ease: 'power1.in'
 						})
 					]);
+				});
+			}
+
+			function onResize() {
+				mm.kill();
+				tl.kill();
+				init();
+			}
+
+			let mm: gsap.MatchMedia;
+			let tl: gsap.core.Timeline;
+
+			gsap.set([the, amoureux, house, image], {
+				x: 0,
+				y: 0
 			});
+
+			init();
+
+			window.addEventListener('resize', onResize);
+			return () => window.removeEventListener('resize', onResize);
 		});
 	});
 </script>
