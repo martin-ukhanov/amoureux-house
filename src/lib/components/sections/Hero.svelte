@@ -1,16 +1,50 @@
 <script lang="ts">
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+	import { SplitText } from 'gsap/dist/SplitText';
 	import { useGSAP } from '$lib/utils/gsap.svelte';
+	import { IsIntroComplete } from '$lib/utils/globals.svelte';
 	import ButtonCircle from '$lib/components/ButtonCircle.svelte';
 	import hero from '$lib/assets/images/hero.avif';
 
+	let introContext: gsap.Context;
 	let scrollArea: HTMLElement;
 	let the: HTMLSpanElement;
 	let amoureux: HTMLSpanElement;
 	let house: HTMLSpanElement;
+	let theWrapper: HTMLDivElement;
+	let amoureuxWrapper: HTMLDivElement;
+	let houseWrapper: HTMLDivElement;
 
 	$effect(() => {
+		// Intro animation
+		introContext = useGSAP((self) => {
+			const stThe = new SplitText(the, { type: 'chars,words' });
+			const stAmoureux = new SplitText(amoureux, { type: 'chars,words' });
+			const stHouse = new SplitText(house, { type: 'chars,words' });
+			const tl = gsap.timeline({ paused: true }).add([
+				gsap.to(stThe.chars, {
+					yPercent: 0,
+					stagger: 0.5 / stThe.chars.length
+				}),
+				gsap.to(stAmoureux.chars.reverse(), {
+					yPercent: 0,
+					stagger: 0.5 / stAmoureux.chars.length
+				}),
+				gsap.to(stHouse.chars, {
+					yPercent: 0,
+					stagger: 0.5 / stHouse.chars.length
+				})
+			]);
+
+			gsap.set([stThe.chars, stAmoureux.chars, stHouse.chars], {
+				yPercent: 100
+			});
+
+			self.add('play', () => tl.play());
+		});
+
+		// Scroll animation
 		useGSAP(() => {
 			function init() {
 				mm = gsap.matchMedia();
@@ -26,15 +60,15 @@
 					});
 
 					tl.add([
-						gsap.to(the, {
+						gsap.to(theWrapper, {
 							x: '-50dvw',
 							ease: 'power1.in'
 						}),
-						gsap.to(amoureux, {
+						gsap.to(amoureuxWrapper, {
 							x: '50dvw',
 							ease: 'power1.in'
 						}),
-						gsap.to(house, {
+						gsap.to(houseWrapper, {
 							x: '-50dvw',
 							ease: 'power1.in'
 						})
@@ -51,15 +85,15 @@
 					});
 
 					tl.add([
-						gsap.to(the, {
+						gsap.to(theWrapper, {
 							x: '-25dvw',
 							ease: 'power1.in'
 						}),
-						gsap.to(amoureux, {
+						gsap.to(amoureuxWrapper, {
 							x: '25dvw',
 							ease: 'power1.in'
 						}),
-						gsap.to(house, {
+						gsap.to(houseWrapper, {
 							y: '25dvh',
 							ease: 'power1.in'
 						})
@@ -76,7 +110,7 @@
 			let mm: gsap.MatchMedia;
 			let tl: gsap.core.Timeline;
 
-			gsap.set([the, amoureux, house], {
+			gsap.set([theWrapper, amoureuxWrapper, houseWrapper], {
 				x: 0,
 				y: 0
 			});
@@ -87,6 +121,10 @@
 			return () => window.removeEventListener('resize', onResize);
 		});
 	});
+
+	$effect(() => {
+		if (IsIntroComplete.get()) introContext.play();
+	});
 </script>
 
 <section
@@ -95,38 +133,39 @@
 >
 	<h1 class="sr-only">The Amoureux House</h1>
 
-	<span
-		aria-hidden="true"
-		class="-mb-[0.146em] block self-end text-h1 max-tablet:row-start-1"
-		bind:this={the}
+	<div
+		class="self-end overflow-clip pt-[0.025em] text-h1 max-tablet:row-start-1"
+		bind:this={theWrapper}
 	>
-		The
-	</span>
+		<span aria-hidden="true" class="-mb-[0.146em] block" bind:this={the}>The</span>
+	</div>
+
 	<img
 		src={hero}
 		alt="Hero"
 		class="col-span-2 rounded-2xl shadow-lg shadow-[black]/50 max-tablet:row-start-4"
 	/>
 
-	<span
-		aria-hidden="true"
-		class="col-span-full mt-[0.02333em] mr-[0.05em] -mb-[0.146em] block text-right text-h1 max-tablet:row-start-2"
-		bind:this={amoureux}
+	<div
+		class="col-span-full overflow-clip pb-[0.013em] text-h1 max-tablet:row-start-2"
+		bind:this={amoureuxWrapper}
 	>
-		Amoureux
-	</span>
+		<span
+			aria-hidden="true"
+			class="mt-[0.0388em] mr-[0.05em] -mb-[0.146em] block text-right"
+			bind:this={amoureux}>Amoureux</span
+		>
+	</div>
 
 	<div class="self-end text-body-sm max-tablet:row-start-5">
 		<p>Featuring Pelagie X</p>
 		<p>A film by Breakwater Studios</p>
 	</div>
-	<span
-		aria-hidden="true"
-		class="mt-[0.02333em] -mb-[0.146em] block text-h1 max-tablet:row-start-3"
-		bind:this={house}
-	>
-		House
-	</span>
+
+	<div class="overflow-clip pt-[0.04em] text-h1 max-tablet:row-start-3" bind:this={houseWrapper}>
+		<span aria-hidden="true" class="-mb-[0.122em] block" bind:this={house}>House</span>
+	</div>
+
 	<div class="relative max-tablet:row-start-3">
 		<div class="button-position absolute">
 			<ButtonCircle text="Visit The House" href="/" />

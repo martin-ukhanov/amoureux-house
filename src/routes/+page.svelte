@@ -6,6 +6,7 @@
 	import { SplitText } from 'gsap/dist/SplitText';
 	import Lenis from 'lenis';
 	import { useGSAP } from '$lib/utils/gsap.svelte';
+	import { IsIntroComplete } from '$lib/utils/globals.svelte';
 	import Header from '$lib/components/header/Header.svelte';
 	import Hero from '$lib/components/sections/Hero.svelte';
 	import Story from '$lib/components/sections/Story.svelte';
@@ -63,6 +64,7 @@
 				delay: 2,
 				onStart: () => {
 					clearInterval(interval);
+					IsIntroComplete.set(true);
 				},
 				onComplete: () => {
 					overlay.style.pointerEvents = 'none';
