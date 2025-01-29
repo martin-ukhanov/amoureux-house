@@ -80,7 +80,7 @@
 			style={`background-image: url(${images[imageIndex]});`}
 			class="flex aspect-video w-64 items-center justify-center rounded-sm bg-cover bg-center"
 		>
-			<span class="text-center font-heading">The Amoureux House</span>
+			<span class="text-center font-heading uppercase">The Amoureux House</span>
 		</div>
 	</div>
 </div>
