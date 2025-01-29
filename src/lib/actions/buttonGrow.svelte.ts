@@ -11,6 +11,10 @@ export const buttonGrow: Action = (node) => {
 				paused: true
 			});
 
+			gsap.set(node, {
+				scale: 1
+			});
+
 			self.add('play', () => tween.play());
 			self.add('reverse', () => tween.reverse());
 		});
