@@ -3,9 +3,10 @@
 	import 'lenis/dist/lenis.css';
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+	import { SplitText } from 'gsap/dist/SplitText';
 	import Lenis from 'lenis';
 	import { useGSAP } from '$lib/utils/gsap.svelte';
-	import Header from '$lib/components/Header.svelte';
+	import Header from '$lib/components/header/Header.svelte';
 	import Hero from '$lib/components/sections/Hero.svelte';
 	import Story from '$lib/components/sections/Story.svelte';
 	import hero from '$lib/assets/images/hero.avif';
@@ -25,7 +26,7 @@
 		duration: 0.5,
 		ease: 'power1.inOut'
 	});
-	gsap.registerPlugin(ScrollTrigger);
+	gsap.registerPlugin(ScrollTrigger, SplitText);
 
 	$effect(() => {
 		// Initialize Lenis
