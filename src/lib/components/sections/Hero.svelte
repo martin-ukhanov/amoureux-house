@@ -6,7 +6,6 @@
 	import hero from '$lib/assets/images/hero.avif';
 
 	let scrollArea: HTMLElement;
-	let image: HTMLImageElement;
 	let the: HTMLSpanElement;
 	let amoureux: HTMLSpanElement;
 	let house: HTMLSpanElement;
@@ -38,10 +37,6 @@
 						gsap.to(house, {
 							x: '-50dvw',
 							ease: 'power1.in'
-						}),
-						gsap.to(image, {
-							x: '50dvw',
-							ease: 'power1.in'
 						})
 					]);
 				});
@@ -67,10 +62,6 @@
 						gsap.to(house, {
 							y: '25dvh',
 							ease: 'power1.in'
-						}),
-						gsap.to(image, {
-							y: '-25dvh',
-							ease: 'power1.in'
 						})
 					]);
 				});
@@ -85,7 +76,7 @@
 			let mm: gsap.MatchMedia;
 			let tl: gsap.core.Timeline;
 
-			gsap.set([the, amoureux, house, image], {
+			gsap.set([the, amoureux, house], {
 				x: 0,
 				y: 0
 			});
@@ -115,7 +106,6 @@
 		src={hero}
 		alt="Hero"
 		class="col-span-2 rounded-2xl shadow-lg shadow-[black]/50 max-tablet:row-start-4"
-		bind:this={image}
 	/>
 
 	<span
