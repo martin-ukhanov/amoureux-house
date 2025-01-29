@@ -127,7 +127,7 @@
 		</div>
 	</div>
 
-	<div class="col-span-full h-px bg-primary"></div>
+	<div class="relative col-span-full h-px bg-primary"></div>
 </section>
 
 <style>
