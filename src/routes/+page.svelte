@@ -8,13 +8,13 @@
 	import Header from '$lib/components/Header.svelte';
 	import Hero from '$lib/components/sections/Hero.svelte';
 	import Story from '$lib/components/sections/Story.svelte';
-	import loopingVideo from '$lib/assets/images/looping-video.avif';
+	import hero from '$lib/assets/images/hero.avif';
 	import story1 from '$lib/assets/images/story-1.avif';
 	import story2 from '$lib/assets/images/story-2.avif';
 	import story3 from '$lib/assets/images/story-3.avif';
 	import story4 from '$lib/assets/images/story-4.avif';
 
-	let images = [loopingVideo, story1, story2, story3, story4];
+	let images = [hero, story1, story2, story3, story4];
 	let imageIndex = $state(0);
 
 	let overlay: HTMLDivElement;

@@ -3,7 +3,7 @@
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import { useGSAP } from '$lib/utils/gsap.svelte';
 	import ButtonCircle from '$lib/components/ButtonCircle.svelte';
-	import loopingVideo from '$lib/assets/images/looping-video.avif';
+	import hero from '$lib/assets/images/hero.avif';
 
 	let scrollArea: HTMLElement;
 	let image: HTMLImageElement;
@@ -112,8 +112,8 @@
 		The
 	</span>
 	<img
-		src={loopingVideo}
-		alt="Looping Video"
+		src={hero}
+		alt="Hero"
 		class="col-span-2 rounded-2xl shadow-lg shadow-[black]/50 max-tablet:row-start-4"
 		bind:this={image}
 	/>
