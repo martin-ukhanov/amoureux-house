@@ -5,6 +5,11 @@ import type { Action } from 'svelte/action';
 export const buttonInteraction: Action = (node) => {
 	$effect(() => {
 		const moveContext = useGSAP((self) => {
+			gsap.set(node, {
+				x: 0,
+				y: 0
+			});
+
 			self.add('mouseMove', (e: MouseEvent) => {
 				const xTo = gsap.quickTo(node, 'x', { duration: 0.25, ease: 'power1.out' });
 				const yTo = gsap.quickTo(node, 'y', { duration: 0.25, ease: 'power1.out' });
