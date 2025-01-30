@@ -161,7 +161,7 @@
 
 	<!-- Tablet/Mobile -->
 	<div class="flex flex-col gap-y-6 px-6 py-8 desktop:hidden">
-		<h3>Pelagie's<br />Story</h3>
+		<h3 class="mt-6">Pelagie's<br />Story</h3>
 
 		<div class="max-w-120 text-block text-secondary">
 			<p>
