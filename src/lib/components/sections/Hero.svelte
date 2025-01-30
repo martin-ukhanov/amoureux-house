@@ -326,7 +326,7 @@
 		onmousemove={(e) => playContext.mouseMove(e)}
 		onmouseleave={(e) => playContext.mouseLeave(e)}
 	>
-		<img src={hero} alt="Hero" class="rounded-[inherit] shadow-lg shadow-[black]/50" />
+		<img src={hero} alt="Hero" class="rounded-[inherit] shadow-2xl shadow-[black]" />
 
 		<div
 			class="pointer-events-none absolute -top-2 right-2 flex aspect-square items-center justify-center rounded-full bg-surface-content px-[1.25em] text-center leading-[1] text-secondary tablet:top-6 tablet:right-6 tablet:bg-transparent tablet:shadow-[inset_0_0_0_1px]"
