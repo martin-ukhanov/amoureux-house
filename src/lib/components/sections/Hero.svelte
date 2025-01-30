@@ -9,13 +9,17 @@
 
 	let introContext: gsap.Context;
 	let playContext: gsap.Context;
+
 	let scrollArea: HTMLElement;
+
 	let the: HTMLSpanElement;
 	let amoureux: HTMLSpanElement;
 	let house: HTMLSpanElement;
+
 	let theWrapper: HTMLDivElement;
 	let amoureuxWrapper: HTMLDivElement;
 	let houseWrapper: HTMLDivElement;
+
 	let play: HTMLDivElement;
 	let playFill: HTMLDivElement;
 	let playText: HTMLSpanElement;
@@ -26,6 +30,7 @@
 			const stThe = new SplitText(the, { type: 'chars,words' });
 			const stAmoureux = new SplitText(amoureux, { type: 'chars,words' });
 			const stHouse = new SplitText(house, { type: 'chars,words' });
+
 			const tl = gsap.timeline({ delay: 0.5, paused: true }).add([
 				gsap.to(stThe.chars, {
 					yPercent: 0,

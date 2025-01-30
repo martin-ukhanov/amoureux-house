@@ -14,6 +14,7 @@
 		context = useGSAP((self) => {
 			const st1 = new SplitText(text1, { type: 'chars,words' });
 			const st2 = new SplitText(text2, { type: 'chars,words' });
+
 			const tl = gsap.timeline({ paused: true }).add([
 				gsap.to([st1.chars, st2.chars], {
 					yPercent: -100,
