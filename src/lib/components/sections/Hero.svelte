@@ -8,6 +8,7 @@
 	import hero from '$lib/assets/images/hero.avif';
 
 	let introContext: gsap.Context;
+	let playContext: gsap.Context;
 	let scrollArea: HTMLElement;
 	let the: HTMLSpanElement;
 	let amoureux: HTMLSpanElement;
@@ -15,6 +16,9 @@
 	let theWrapper: HTMLDivElement;
 	let amoureuxWrapper: HTMLDivElement;
 	let houseWrapper: HTMLDivElement;
+	let play: HTMLDivElement;
+	let playFill: HTMLDivElement;
+	let playText: HTMLSpanElement;
 
 	$effect(() => {
 		// Intro animation
@@ -42,6 +46,102 @@
 			});
 
 			self.add('play', () => tl.play());
+		});
+
+		// Play interaction
+		playContext = useGSAP((self) => {
+			function calculateX(
+				e: MouseEvent & {
+					currentTarget: EventTarget & HTMLAnchorElement;
+				}
+			) {
+				const { left, width } = e.currentTarget.getBoundingClientRect();
+
+				return (
+					e.clientX -
+					left -
+					(width - parseFloat(getComputedStyle(play).right.slice(0, -2))) +
+					play.offsetWidth / 2
+				);
+			}
+
+			function calculateY(
+				e: MouseEvent & {
+					currentTarget: EventTarget & HTMLAnchorElement;
+				}
+			) {
+				const { top } = e.currentTarget.getBoundingClientRect();
+
+				return (
+					e.clientY -
+					top -
+					parseFloat(getComputedStyle(play).top.slice(0, -2)) -
+					play.offsetHeight / 2
+				);
+			}
+
+			const fillTl = gsap.timeline({ paused: true }).add([
+				gsap.to(playFill, {
+					scale: 1,
+					duration: 0.25
+				}),
+				gsap.to(playText, {
+					color: getComputedStyle(document.documentElement).getPropertyValue('--color-surface'),
+					duration: 0.25
+				})
+			]);
+
+			self.add(
+				'mouseEnter',
+				(
+					e: MouseEvent & {
+						currentTarget: EventTarget & HTMLAnchorElement;
+					}
+				) => {
+					gsap.to(play, {
+						x: calculateX(e),
+						y: calculateY(e)
+					});
+
+					fillTl.play();
+				}
+			);
+
+			self.add(
+				'mouseMove',
+				(
+					e: MouseEvent & {
+						currentTarget: EventTarget & HTMLAnchorElement;
+					}
+				) => {
+					const xTo = gsap.quickTo(play, 'x', { ease: 'power1.out' });
+					const yTo = gsap.quickTo(play, 'y', { ease: 'power1.out' });
+
+					xTo(calculateX(e));
+					yTo(calculateY(e));
+				}
+			);
+
+			self.add('mouseLeave', () => {
+				gsap.to(play, {
+					x: 0,
+					y: 0,
+					ease: 'power1.out'
+				});
+
+				fillTl.reverse();
+			});
+
+			self.add('resetPosition', () => {
+				gsap.to(play, {
+					x: 0,
+					y: 0,
+					ease: 'power1.out'
+				});
+			});
+
+			window.addEventListener('resize', self.resetPosition);
+			return () => window.removeEventListener('resize', self.resetPosition);
 		});
 
 		// Scroll animation
@@ -140,11 +240,29 @@
 		<span aria-hidden="true" class="-mb-[0.146em] block" bind:this={the}>The</span>
 	</div>
 
-	<img
-		src={hero}
-		alt="Hero"
-		class="col-span-2 rounded-2xl shadow-lg shadow-[black]/50 max-tablet:row-start-4"
-	/>
+	<a
+		href="https://youtu.be/dQw4w9WgXcQ?si=wu4Hum0vthwGZ3m0"
+		target="_blank"
+		class="relative col-span-2 rounded-2xl max-tablet:row-start-4"
+		onmouseenter={(e) => playContext.mouseEnter(e)}
+		onmousemove={(e) => playContext.mouseMove(e)}
+		onmouseleave={() => playContext.mouseLeave()}
+	>
+		<img src={hero} alt="Hero" class="rounded-[inherit] shadow-lg shadow-[black]/50" />
+
+		<div
+			class="pointer-events-none absolute -top-2 right-2 flex aspect-square -rotate-16 items-center justify-center rounded-full bg-surface-content px-[1.25em] text-center leading-[1] text-secondary shadow-[inset_0_0_0_1px] tablet:top-6 tablet:right-6 tablet:bg-transparent"
+			bind:this={play}
+		>
+			<div
+				class="absolute hidden size-full scale-0 rounded-full bg-secondary tablet:block"
+				bind:this={playFill}
+			></div>
+
+			<span class="relative hidden tablet:inline" bind:this={playText}>Play film</span>
+			<span class="text-surface tablet:hidden">Play<br />Film</span>
+		</div>
+	</a>
 
 	<div
 		class="col-span-full overflow-clip pb-[0.013em] text-h1 max-tablet:row-start-2"
