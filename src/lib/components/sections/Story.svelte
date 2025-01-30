@@ -102,22 +102,22 @@
 
 			<img
 				src={story1}
-				alt="Story 1"
+				alt="Two girls playing outside in the grass."
 				class="image-1 col-span-3 col-start-1 row-span-5 row-start-7 rounded-sm"
 			/>
 			<img
 				src={story2}
-				alt="Story 2"
+				alt="Two girls looking up in a forest."
 				class="image-2 col-span-3 col-start-1 row-span-5 row-start-12 rounded-sm"
 			/>
 			<img
 				src={story3}
-				alt="Story 3"
+				alt="The Amoureux House with Pelagie sitting on the porch."
 				class="image-3 col-span-3 col-start-4 row-span-6 row-start-5 rounded-sm"
 			/>
 			<img
 				src={story4}
-				alt="Story 4"
+				alt="A closeup shot of Pelagie's face."
 				class="image-4 col-span-2 col-start-4 row-span-6 rounded-sm"
 			/>
 		</div>
@@ -193,10 +193,26 @@
 		</div>
 
 		<div class="grid grid-cols-8 gap-x-2.5 gap-y-10">
-			<img src={story1} alt="Story 1" class="image-1 col-span-4 rounded-sm" />
-			<img src={story2} alt="Story 2" class="image-2 col-span-5 row-start-2 rounded-sm" />
-			<img src={story3} alt="Story 3" class="image-3 col-span-4 rounded-sm" />
-			<img src={story4} alt="Story 4" class="image-4 col-span-3 row-start-2 rounded-sm" />
+			<img
+				src={story1}
+				alt="Two girls playing outside in the grass."
+				class="image-1 col-span-4 rounded-sm"
+			/>
+			<img
+				src={story2}
+				alt="Two girls looking up in a forest."
+				class="image-2 col-span-5 row-start-2 rounded-sm"
+			/>
+			<img
+				src={story3}
+				alt="The Amoureux House with Pelagie sitting on the porch."
+				class="image-3 col-span-4 rounded-sm"
+			/>
+			<img
+				src={story4}
+				alt="A closeup shot of Pelagie's face."
+				class="image-4 col-span-3 row-start-2 rounded-sm"
+			/>
 		</div>
 	</div>
 </section>
