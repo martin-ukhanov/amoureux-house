@@ -56,11 +56,15 @@
 			});
 
 			gsap.to(image, {
-				scale: 1
+				scale: 1,
+				duration: 1,
+				ease: 'expo.out'
 			});
 
 			gsap.to(overlay, {
 				opacity: 0,
+				duration: 1,
+				ease: 'expo.inOut',
 				delay: 2,
 				onStart: () => {
 					clearInterval(interval);

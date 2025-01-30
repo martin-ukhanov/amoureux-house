@@ -26,18 +26,30 @@
 			const stThe = new SplitText(the, { type: 'chars,words' });
 			const stAmoureux = new SplitText(amoureux, { type: 'chars,words' });
 			const stHouse = new SplitText(house, { type: 'chars,words' });
-			const tl = gsap.timeline({ paused: true }).add([
+			const tl = gsap.timeline({ delay: 0.5, paused: true }).add([
 				gsap.to(stThe.chars, {
 					yPercent: 0,
-					stagger: 0.5 / stThe.chars.length
+					duration: 1,
+					stagger: {
+						amount: 0.5
+					},
+					ease: 'expo.out'
 				}),
 				gsap.to(stAmoureux.chars.reverse(), {
 					yPercent: 0,
-					stagger: 0.5 / stAmoureux.chars.length
+					duration: 1,
+					stagger: {
+						amount: 0.5
+					},
+					ease: 'expo.out'
 				}),
 				gsap.to(stHouse.chars, {
 					yPercent: 0,
-					stagger: 0.5 / stHouse.chars.length
+					duration: 1,
+					stagger: {
+						amount: 0.5
+					},
+					ease: 'expo.out'
 				})
 			]);
 
@@ -131,6 +143,7 @@
 					gsap.to(play, {
 						x: calculateX(e),
 						y: calculateY(e),
+						ease: 'power1.out',
 						onUpdate: () => {
 							checkIsHovering(e);
 						}

@@ -18,7 +18,9 @@
 				gsap.to([st1.chars, st2.chars], {
 					yPercent: -100,
 					duration: 0.25,
-					stagger: 0.15 / text.length
+					stagger: {
+						amount: 0.25
+					}
 				}),
 				gsap.to(underline, {
 					width: '100%'
