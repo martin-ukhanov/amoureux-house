@@ -46,26 +46,22 @@ export const buttonInteraction: Action = (node) => {
 				scale: 1
 			});
 
-			self.add('grow', () => tween.play());
-			self.add('shrink', () => tween.reverse());
+			self.add('mouseEnter', () => tween.play());
+			self.add('mouseLeave', () => tween.reverse());
 		});
 
 		node.addEventListener('mousemove', moveContext.mouseMove);
 		node.addEventListener('mouseleave', moveContext.mouseLeave);
 
-		node.addEventListener('mouseenter', scaleContext.grow);
-		node.addEventListener('mouseleave', scaleContext.shrink);
-		node.addEventListener('mousedown', scaleContext.shrink);
-		node.addEventListener('mouseup', scaleContext.grow);
+		node.addEventListener('mouseenter', scaleContext.mouseEnter);
+		node.addEventListener('mouseleave', scaleContext.mouseLeave);
 
 		return () => {
 			node.removeEventListener('mousemove', moveContext.mouseMove);
 			node.removeEventListener('mouseleave', moveContext.mouseLeave);
 
-			node.removeEventListener('mouseenter', scaleContext.grow);
-			node.removeEventListener('mouseleave', scaleContext.shrink);
-			node.removeEventListener('mousedown', scaleContext.shrink);
-			node.removeEventListener('mouseup', scaleContext.grow);
+			node.removeEventListener('mouseenter', scaleContext.mouseEnter);
+			node.removeEventListener('mouseleave', scaleContext.mouseLeave);
 		};
 	});
 };
