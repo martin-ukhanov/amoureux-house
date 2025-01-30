@@ -106,6 +106,12 @@
 				}
 			}
 
+			const rotateTween = gsap.to(play, {
+				rotate: '0deg',
+				duration: 0.25,
+				paused: true
+			});
+
 			const hoverTl = gsap.timeline({ paused: true }).add([
 				gsap.to(play, {
 					scale: 1.25,
@@ -126,7 +132,8 @@
 			gsap.set(play, {
 				x: 0,
 				y: 0,
-				scale: 1
+				scale: 1,
+				rotate: '-16deg'
 			});
 
 			gsap.set(playFill, {
@@ -148,6 +155,8 @@
 							checkIsHovering(e);
 						}
 					});
+
+					rotateTween.play();
 				}
 			);
 
@@ -191,6 +200,8 @@
 							checkIsHovering(e);
 						}
 					});
+
+					rotateTween.reverse();
 				}
 			);
 
@@ -313,7 +324,7 @@
 		<img src={hero} alt="Hero" class="rounded-[inherit] shadow-lg shadow-[black]/50" />
 
 		<div
-			class="pointer-events-none absolute -top-2 right-2 flex aspect-square -rotate-16 items-center justify-center rounded-full bg-surface-content px-[1.25em] text-center leading-[1] text-secondary tablet:top-6 tablet:right-6 tablet:bg-transparent tablet:shadow-[inset_0_0_0_1px]"
+			class="pointer-events-none absolute -top-2 right-2 flex aspect-square items-center justify-center rounded-full bg-surface-content px-[1.25em] text-center leading-[1] text-secondary tablet:top-6 tablet:right-6 tablet:bg-transparent tablet:shadow-[inset_0_0_0_1px]"
 			bind:this={play}
 		>
 			<div
