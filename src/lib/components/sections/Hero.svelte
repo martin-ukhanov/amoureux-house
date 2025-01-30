@@ -248,7 +248,7 @@
 	<a
 		href="https://youtu.be/dQw4w9WgXcQ?si=wu4Hum0vthwGZ3m0"
 		target="_blank"
-		class="relative col-span-2 rounded-2xl max-tablet:row-start-4"
+		class="relative z-5 col-span-2 rounded-2xl max-tablet:row-start-4"
 		onmouseenter={(e) => playContext.mouseEnter(e)}
 		onmousemove={(e) => playContext.mouseMove(e)}
 		onmouseleave={() => playContext.mouseLeave()}
