@@ -315,7 +315,7 @@
 		class="self-end overflow-clip pt-[0.04em] text-h1 max-tablet:row-start-1"
 		bind:this={theWrapper}
 	>
-		<span aria-hidden="true" class="-mb-[0.11em] block" bind:this={the}>The</span>
+		<span aria-hidden="true" class="-mb-[0.12em] block" bind:this={the}>The</span>
 	</div>
 
 	<a
@@ -347,13 +347,11 @@
 	</a>
 
 	<div
-		class="col-span-full overflow-clip pb-[0.04em] text-h1 max-tablet:row-start-2"
+		class="col-span-full overflow-clip pt-[0.04em] text-h1 max-tablet:row-start-2"
 		bind:this={amoureuxWrapper}
 	>
-		<span
-			aria-hidden="true"
-			class="mt-[0.0388em] mr-[0.04em] -mb-[0.11em] block text-right"
-			bind:this={amoureux}>Amoureux</span
+		<span aria-hidden="true" class="mr-[0.04em] -mb-[0.12em] block text-right" bind:this={amoureux}
+			>Amoureux</span
 		>
 	</div>
 
@@ -363,7 +361,7 @@
 	</div>
 
 	<div class="overflow-clip pt-[0.04em] text-h1 max-tablet:row-start-3" bind:this={houseWrapper}>
-		<span aria-hidden="true" class="-mb-[0.11em] block" bind:this={house}>House</span>
+		<span aria-hidden="true" class="-mb-[0.12em] block" bind:this={house}>House</span>
 	</div>
 
 	<div class="relative max-tablet:row-start-3">
