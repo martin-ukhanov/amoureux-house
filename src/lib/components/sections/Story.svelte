@@ -1,12 +1,100 @@
 <script lang="ts">
+	import { gsap } from 'gsap';
+	import { useGSAP } from '$lib/utils/gsap.svelte';
 	import ButtonUnderline from '$lib/components/ButtonUnderline.svelte';
 	import story1 from '$lib/assets/images/story-1.avif';
 	import story2 from '$lib/assets/images/story-2.avif';
 	import story3 from '$lib/assets/images/story-3.avif';
 	import story4 from '$lib/assets/images/story-4.avif';
+
+	let scrollArea: HTMLElement;
+
+	$effect(() => {
+		// Scroll animation
+		useGSAP(() => {
+			function init() {
+				tl = gsap
+					.timeline({
+						scrollTrigger: {
+							trigger: scrollArea,
+							start: 'top 50%',
+							end: 'bottom bottom',
+							scrub: true
+						}
+					})
+					.add([
+						gsap.fromTo(
+							'.image-1',
+							{
+								yPercent: -25,
+								opacity: 0
+							},
+							{
+								yPercent: 0,
+								opacity: 1,
+								ease: 'power1.in'
+							}
+						),
+						gsap.fromTo(
+							'.image-2',
+							{
+								xPercent: -25,
+								opacity: 0
+							},
+							{
+								xPercent: 0,
+								opacity: 1,
+								ease: 'power1.in'
+							}
+						),
+						gsap.fromTo(
+							'.image-3',
+							{
+								xPercent: 25,
+								opacity: 0
+							},
+							{
+								xPercent: 0,
+								opacity: 1,
+								ease: 'power1.in'
+							}
+						),
+						gsap.fromTo(
+							'.image-4',
+							{
+								yPercent: 25,
+								opacity: 0
+							},
+							{
+								yPercent: 0,
+								opacity: 1,
+								ease: 'power1.in'
+							}
+						)
+					]);
+			}
+
+			function onResize() {
+				tl.kill();
+				init();
+			}
+
+			let tl: gsap.core.Timeline;
+
+			gsap.set(['.image-1', '.image-2', '.image-3', '.image-4'], {
+				xPercent: 0,
+				yPercent: 0
+			});
+
+			init();
+
+			window.addEventListener('resize', onResize);
+			return () => window.removeEventListener('resize', onResize);
+		}, scrollArea);
+	});
 </script>
 
-<section>
+<section bind:this={scrollArea}>
 	<!-- Desktop -->
 	<div class="hidden gap-x-16 py-12 pr-6 pl-16 desktop:flex">
 		<div class="grid h-fit flex-3 grid-cols-6 gap-2.5">
@@ -15,19 +103,23 @@
 			<img
 				src={story1}
 				alt="Story 1"
-				class="col-span-3 col-start-1 row-span-5 row-start-7 rounded-sm"
+				class="image-1 col-span-3 col-start-1 row-span-5 row-start-7 rounded-sm"
 			/>
 			<img
 				src={story2}
 				alt="Story 2"
-				class="col-span-3 col-start-1 row-span-5 row-start-12 rounded-sm"
+				class="image-2 col-span-3 col-start-1 row-span-5 row-start-12 rounded-sm"
 			/>
 			<img
 				src={story3}
 				alt="Story 3"
-				class="col-span-3 col-start-4 row-span-6 row-start-5 rounded-sm"
+				class="image-3 col-span-3 col-start-4 row-span-6 row-start-5 rounded-sm"
 			/>
-			<img src={story4} alt="Story 4" class="col-span-2 col-start-4 row-span-6 rounded-sm" />
+			<img
+				src={story4}
+				alt="Story 4"
+				class="image-4 col-span-2 col-start-4 row-span-6 rounded-sm"
+			/>
 		</div>
 
 		<div class="-mt-[0.5em] flex h-fit flex-4 flex-col gap-y-6">
@@ -101,10 +193,10 @@
 		</div>
 
 		<div class="grid grid-cols-8 gap-x-2.5 gap-y-10">
-			<img src={story1} alt="Story 1" class="col-span-4 rounded-sm" />
-			<img src={story2} alt="Story 2" class="col-span-5 row-start-2 rounded-sm" />
-			<img src={story3} alt="Story 3" class="col-span-4 rounded-sm" />
-			<img src={story4} alt="Story 4" class="col-span-3 row-start-2 rounded-sm" />
+			<img src={story1} alt="Story 1" class="image-1 col-span-4 rounded-sm" />
+			<img src={story2} alt="Story 2" class="image-2 col-span-5 row-start-2 rounded-sm" />
+			<img src={story3} alt="Story 3" class="image-3 col-span-4 rounded-sm" />
+			<img src={story4} alt="Story 4" class="image-4 col-span-3 row-start-2 rounded-sm" />
 		</div>
 	</div>
 </section>
