@@ -42,8 +42,9 @@
 	onmouseleave={() => context.mouseLeave()}
 >
 	<div class="relative flex items-center justify-center overflow-clip leading-[1.25]">
-		<span bind:this={text1}>{text}</span>
-		<span class="absolute top-full text-primary" bind:this={text2}>{text}</span>
+		<span class="sr-only">{text}</span>
+		<span aria-hidden="true" bind:this={text1}>{text}</span>
+		<span aria-hidden="true" class="absolute top-full text-primary" bind:this={text2}>{text}</span>
 	</div>
 
 	<div class="absolute -bottom-[0.25em] left-0 h-px bg-primary" bind:this={underline}></div>
