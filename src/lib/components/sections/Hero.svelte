@@ -181,12 +181,12 @@
 	.button-position {
 		@apply right-0 bottom-0;
 
-		@media (width < 28rem) {
-			@apply right-auto left-0;
+		@media (width < 27.5rem) {
+			@apply right-auto -left-1;
 		}
 
-		@media (width < 44rem) {
-			@apply top-0 bottom-auto;
+		@media (width < 34rem) {
+			@apply -bottom-1;
 		}
 	}
 </style>
