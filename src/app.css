@@ -90,4 +90,9 @@
 	h3 {
 		@apply text-h3;
 	}
+
+	a,
+	button {
+		@apply cursor-pointer touch-manipulation select-none;
+	}
 }
