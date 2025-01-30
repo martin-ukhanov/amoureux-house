@@ -17,7 +17,7 @@ export const buttonInteraction: Action = (node) => {
 				const { left, top, width, height } = node.getBoundingClientRect();
 				const x = e.clientX - (left + width / 2);
 				const y = e.clientY - (top + height / 2);
-				const intensity = 0.1;
+				const intensity = 0.15;
 
 				xTo(x * intensity);
 				yTo(y * intensity);
