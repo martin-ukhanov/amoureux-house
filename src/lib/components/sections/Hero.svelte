@@ -91,6 +91,11 @@
 				})
 			]);
 
+			gsap.set(play, {
+				x: 0,
+				y: 0
+			});
+
 			self.add(
 				'mouseEnter',
 				(
