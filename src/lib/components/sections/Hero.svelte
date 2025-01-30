@@ -94,7 +94,11 @@
 				}
 			}
 
-			const activateTl = gsap.timeline({ paused: true }).add([
+			const hoverTl = gsap.timeline({ paused: true }).add([
+				gsap.to(play, {
+					scale: 1.25,
+					duration: 0.25
+				}),
 				gsap.to(playFill, {
 					scale: 1,
 					duration: 0.25
@@ -105,18 +109,16 @@
 				})
 			]);
 
-			const scaleTween = gsap.to(play, {
-				scale: 1.25,
-				duration: 0.25,
-				paused: true
-			});
-
 			let isHovering = $state(false);
 
 			gsap.set(play, {
 				x: 0,
 				y: 0,
 				scale: 1
+			});
+
+			gsap.set(playFill, {
+				scale: 0
 			});
 
 			self.add(
@@ -133,8 +135,6 @@
 							checkIsHovering(e);
 						}
 					});
-
-					activateTl.play();
 				}
 			);
 
@@ -178,32 +178,19 @@
 							checkIsHovering(e);
 						}
 					});
-
-					activateTl.reverse();
 				}
 			);
 
-			self.add('resetPosition', () => {
-				gsap.to(play, {
-					x: 0,
-					y: 0,
-					ease: 'power1.out'
-				});
-			});
-
-			self.add('grow', () => scaleTween.play());
-			self.add('shrink', () => scaleTween.reverse());
-
 			$effect(() => {
 				if (isHovering) {
-					self.grow();
+					hoverTl.play();
 				} else {
-					self.shrink();
+					hoverTl.reverse();
 				}
 			});
 
-			window.addEventListener('resize', self.resetPosition);
-			return () => window.removeEventListener('resize', self.resetPosition);
+			window.addEventListener('resize', self.mouseLeave);
+			return () => window.removeEventListener('resize', self.mouseLeave);
 		});
 
 		// Scroll animation
