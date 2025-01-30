@@ -80,7 +80,21 @@
 				);
 			}
 
-			const fillTl = gsap.timeline({ paused: true }).add([
+			function checkIsHovering(
+				e: MouseEvent & {
+					currentTarget: EventTarget & HTMLAnchorElement;
+				}
+			) {
+				const { left, right, top, bottom } = play.getBoundingClientRect();
+
+				if (e.clientX >= left && e.clientX <= right && e.clientY >= top && e.clientY <= bottom) {
+					isHovering = true;
+				} else {
+					isHovering = false;
+				}
+			}
+
+			const activateTl = gsap.timeline({ paused: true }).add([
 				gsap.to(playFill, {
 					scale: 1,
 					duration: 0.25
@@ -91,9 +105,18 @@
 				})
 			]);
 
+			const scaleTween = gsap.to(play, {
+				scale: 1.25,
+				duration: 0.25,
+				paused: true
+			});
+
+			let isHovering = $state(false);
+
 			gsap.set(play, {
 				x: 0,
-				y: 0
+				y: 0,
+				scale: 1
 			});
 
 			self.add(
@@ -105,10 +128,13 @@
 				) => {
 					gsap.to(play, {
 						x: calculateX(e),
-						y: calculateY(e)
+						y: calculateY(e),
+						onUpdate: () => {
+							checkIsHovering(e);
+						}
 					});
 
-					fillTl.play();
+					activateTl.play();
 				}
 			);
 
@@ -119,23 +145,43 @@
 						currentTarget: EventTarget & HTMLAnchorElement;
 					}
 				) => {
-					const xTo = gsap.quickTo(play, 'x', { ease: 'power1.out' });
-					const yTo = gsap.quickTo(play, 'y', { ease: 'power1.out' });
+					const xTo = gsap.quickTo(play, 'x', {
+						ease: 'power1.out',
+						onUpdate: () => {
+							checkIsHovering(e);
+						}
+					});
+					const yTo = gsap.quickTo(play, 'y', {
+						ease: 'power1.out',
+						onUpdate: () => {
+							checkIsHovering(e);
+						}
+					});
 
 					xTo(calculateX(e));
 					yTo(calculateY(e));
 				}
 			);
 
-			self.add('mouseLeave', () => {
-				gsap.to(play, {
-					x: 0,
-					y: 0,
-					ease: 'power1.out'
-				});
+			self.add(
+				'mouseLeave',
+				(
+					e: MouseEvent & {
+						currentTarget: EventTarget & HTMLAnchorElement;
+					}
+				) => {
+					gsap.to(play, {
+						x: 0,
+						y: 0,
+						ease: 'power1.out',
+						onUpdate: () => {
+							checkIsHovering(e);
+						}
+					});
 
-				fillTl.reverse();
-			});
+					activateTl.reverse();
+				}
+			);
 
 			self.add('resetPosition', () => {
 				gsap.to(play, {
@@ -143,6 +189,17 @@
 					y: 0,
 					ease: 'power1.out'
 				});
+			});
+
+			self.add('grow', () => scaleTween.play());
+			self.add('shrink', () => scaleTween.reverse());
+
+			$effect(() => {
+				if (isHovering) {
+					self.grow();
+				} else {
+					self.shrink();
+				}
 			});
 
 			window.addEventListener('resize', self.resetPosition);
@@ -251,7 +308,7 @@
 		class="relative z-5 col-span-2 rounded-2xl max-tablet:row-start-4"
 		onmouseenter={(e) => playContext.mouseEnter(e)}
 		onmousemove={(e) => playContext.mouseMove(e)}
-		onmouseleave={() => playContext.mouseLeave()}
+		onmouseleave={(e) => playContext.mouseLeave(e)}
 	>
 		<img src={hero} alt="Hero" class="rounded-[inherit] shadow-lg shadow-[black]/50" />
 
